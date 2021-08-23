@@ -1,0 +1,58 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light pd-0rem">
+    <div class="container-fluid" >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">admin panel</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="/admin"
+            >all products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">all orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">all users</a>
+          </li>
+
+        </ul>
+       <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{#if adminsession}}
+              {{adminsession.name}}
+            {{else}}
+              Account
+            {{/if}}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {{#if adminsession}}
+              <li><a class="dropdown-item" href="/admin/logout">Logout</a></li>
+            {{else}}
+              <li><a class="dropdown-item" href="/admin/login">Login</a></li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -180,19 +180,21 @@
         </div>
       </div>
       <!-- Top Products -->
+      
       <div class="top-products-area py-3">
         <div class="container">
           <div class="section-heading d-flex align-items-center justify-content-between">
-            <h6>Top Products</h6><a class="btn" href="shop-grid.html">View All</a>
+            <h6>Top Products</h6><a class="btn" href="/shop-grid">View All</a>
           </div>
           <div class="row g-3">
             <!-- Single Top Product Card -->
+            {{#each products}}
             <div class="col-6 col-md-4 col-lg-3">
               <div class="card product-card">
                 <div class="card-body">
                   <!-- Badge--><span class="badge rounded-pill badge-warning">Sale</span>
                   <!-- Wishlist Button--><a class="wishlist-btn" href="#"><i class="lni lni-heart">                       </i></a>
-                  <!-- Thumbnail --><a class="product-thumbnail d-block" href="single-product.html"><img class="mb-2" src="img/product/11.png" alt="">
+                  <!-- Thumbnail --><a class="product-thumbnail d-block" href="single-product.html"><img class="mb-2" style="width: 13rem;height:118px;" src="/product-images/{{this._id}}.jpg" alt="">
                     <!-- Offer Countdown Timer: Please use event time this format: YYYY/MM/DD hh:mm:ss -->
                     <ul class="offer-countdown-timer d-flex align-items-center shadow-sm" data-countdown="2021/12/31 23:59:59">
                       <li><span class="days">0</span>d</li>
@@ -200,15 +202,18 @@
                       <li><span class="minutes">0</span>m</li>
                       <li><span class="seconds">0</span>s</li>
                     </ul></a>
-                  <!-- Product Title --><a class="product-title d-block" href="single-product.html">Beach Cap</a>
+                  <!-- Product Title --><a class="product-title d-block" href="single-product.html">{{this.name}}</a>
                   <!-- Product Price -->
-                  <p class="sale-price">$13<span>$42</span></p>
+                  <h5 class="card-title" >{{this.category}}</h5>
+              <p class="card-text">{{this.description}}</p>
+                  <p class="sale-price">{{this.price}}<span>$42</span></p>
                   <!-- Rating -->
                   <div class="product-rating"><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i><i class="lni lni-star-filled"></i></div>
                   <!-- Add to Cart --><a class="btn btn-success btn-sm" href="#"><i class="lni lni-plus"></i></a>
                 </div>
               </div>
             </div>
+            {{/each}}
             <!-- Single Top Product Card -->
             <div class="col-6 col-md-4 col-lg-3">
               <div class="card product-card">
@@ -500,26 +505,13 @@
         </div>
         <!-- Collection Slide-->
         <div class="collection-slide owl-carousel">
+          {{#each products}}
           <!-- Collection Card-->
-          <div class="card collection-card"><a href="single-product.html"><img src="img/product/17.jpg" alt=""></a>
-            <div class="collection-title"><span>Women</span><span>9 new items</span></div>
+          <div class="card collection-card"><a href="single-product.html"><img style="width: 13rem;height:175px;" src="/product-images/{{this._id}}.jpg" alt=""></a>
+            <div class="collection-title"><span>{{this.category}}</span><span>{{this.totalQuantity}} items</span></div>
           </div>
-          <!-- Collection Card-->
-          <div class="card collection-card"><a href="single-product.html"><img src="img/product/19.jpg" alt=""></a>
-            <div class="collection-title"><span>Men</span><span>29 items</span></div>
-          </div>
-          <!-- Collection Card-->
-          <div class="card collection-card"><a href="single-product.html"><img src="img/product/21.jpg" alt=""></a>
-            <div class="collection-title"><span>Kids</span><span>4 new items</span></div>
-          </div>
-          <!-- Collection Card-->
-          <div class="card collection-card"><a href="single-product.html"><img src="img/product/22.jpg" alt=""></a>
-            <div class="collection-title"><span>Gadget</span><span>11 items</span></div>
-          </div>
-          <!-- Collection Card-->
-          <div class="card collection-card"><a href="single-product.html"><img src="img/product/23.jpg" alt=""></a>
-            <div class="collection-title"><span>Foods</span><span>2 new items</span></div>
-          </div>
+          {{/each}}
+          
           <!-- Collection Card-->
           <div class="card collection-card"><a href="single-product.html"><img src="img/product/24.jpg" alt=""></a>
             <div class="collection-title"><span>Sports</span><span>5 items</span></div>
