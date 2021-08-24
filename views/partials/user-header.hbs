@@ -11,7 +11,7 @@
     <div class="header-area" id="headerArea">
       <div class="container h-100 d-flex align-items-center justify-content-between">
         <!-- Logo Wrapper-->
-        <div class="logo-wrapper"><a href="home.html"><img src="img/core-img/logo-small.png" alt=""></a></div>
+        <div class="logo-wrapper"><a href="home.html"><img style="width: 3rem; height:3rem;border-radius: 50%;" src="https://i.pinimg.com/originals/03/26/88/032688086182d7bd44a8e76327ca5b70.jpg" alt=""></a></div>
         <!-- Search Form-->
         <div class="top-search-form">
           <form action="#" method="">
@@ -21,6 +21,30 @@
         </div>
         <!-- Navbar Toggler-->
         <div class="suha-navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#suhaOffcanvas" aria-controls="suhaOffcanvas"><span></span><span></span><span></span></div>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="background-color: #0d6efd;
+    border-color: #36d0e1;"
+          >
+            {{#if user}}
+              {{user.name}}
+            {{else}}
+              Account
+            {{/if}}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {{#if user}}
+              <li><a class="dropdown-item"  href="/logout">Logout</a></li>
+            {{else}}
+              <li><a class="dropdown-item" href="/login">Login</a></li>
+            {{/if}}
+          </ul>
+        </div>
       </div>
     </div>
     <div class="offcanvas offcanvas-start suha-offcanvas-wrap" tabindex="-1" id="suhaOffcanvas" aria-labelledby="suhaOffcanvasLabel">
@@ -57,7 +81,7 @@
             </ul>
           </li>
           <li><a href="settings.html"><i class="lni lni-cog"></i>Settings</a></li>
-          <li><a href="intro.html"><i class="lni lni-power-switch"></i>Sign Out</a></li>
+          <li><a href="/logout"><i class="lni lni-power-switch"></i>Sign Out</a></li>
         </ul>
       </div>
     </div>
