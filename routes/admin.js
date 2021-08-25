@@ -4,7 +4,8 @@ var productHelpers = require("../helpers/product-helpers");
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/',function(req, res, next) {
+
 
   productHelpers.getAllProduct().then((products)=>{
     res.render('admin/view-products', { admin: true,products});
@@ -12,9 +13,10 @@ router.get('/', function(req, res, next) {
   
 });
 
-router.get("/add-product", (req, res) => {
-  
-  res.render("admin/add-product",{admin: true});
+router.get("/add-product", async(req, res) => {
+  let catagory=await productHelpers.getAllCatagory();
+  console.log(catagory);
+  res.render("admin/add-product",{catagory,admin: true});
 });
 router.post("/add-product",(req, res) => {
   console.log(req.body);
@@ -45,12 +47,13 @@ router.get("/delete-product/:id", (req, res) => {
 });
 
 router.get("/edit-product/",async(req, res) => {
-  let prodId = req.query.id;                                 //matte params methodil pass cheythal err varunu .because of url three times chenge avunu
+  let prodId = req.query.id; 
+  let catagory=await productHelpers.getAllCatagory();                                //matte params methodil pass cheythal err varunu .because of url three times chenge avunu
   console.log("url now:",req.url)
   let product = await productHelpers.getProductDetails(prodId); //.then vachum edukam.normal cheyunapole
   console.log(product);
 
-  res.render("admin/edit-product",{product,admin:true});
+  res.render("admin/edit-product",{product,admin:true,catagory});
 });
 
 router.post("/edit-product/:id", (req, res) => {

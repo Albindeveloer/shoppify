@@ -85,5 +85,28 @@ module.exports={
             });
         });
       },
+
+      getAllCatagory: () => {
+        return new Promise(async(resolve, reject) => {
+          let catagory = await db
+            .get()
+            .collection(collection.COMMON_COLLECTION)
+            .find()
+            .toArray();
+          resolve(catagory);
+        });
+      },
+
+      getCatagoryProduct: (cata) => {
+        return new Promise(async(resolve, reject) => {
+          let products = await db
+            .get()
+            .collection(collection.PRODUCT_COLLECTION)
+            .find({ category: cata})
+            .toArray();
+            console.log(products)
+          resolve(products);
+        });
+      },
  
 }

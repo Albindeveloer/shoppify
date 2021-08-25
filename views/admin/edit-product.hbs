@@ -18,13 +18,11 @@
             value="{{product.name}}"
           />
           <label for="lname">category</label>
-          <input
-            type="text"
-            id="lname"
-            name="category"
-            class="form-control"
-            value="{{product.category}}"
-          />
+           <select name="category" id="cars" class="form-control">
+             {{#each catagory}}
+  <option value="{{this.catagory}}">{{this.catagory}}</option>
+{{/each}}
+</select>
           <label for="fname">price</label>
           <input
             type="text"

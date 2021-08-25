@@ -5,12 +5,13 @@ var productHelpers = require("../helpers/product-helpers");
 var userHelpers = require("../helpers/user-helpers");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   let user = req.session.user;
   console.log(user)
+  let catagory=await productHelpers.getAllCatagory();
   productHelpers.getAllProduct().then((products)=>{
     
-    res.render('user/view-products', { admin: false,products,user});
+    res.render('user/view-products', { admin: false,products,user,catagory});
   })
   
 });
@@ -71,10 +72,12 @@ router.get("/logout", (req, res) => {
 });
 
 
-router.get("/catagory",(req,res)=>{
-  productHelpers.getAllProduct().then((products)=>{
+router.get("/catagory",async(req,res)=>{
+  let cata=req.query.catagory;
+  let catagory=await productHelpers.getAllCatagory();
+  productHelpers.getCatagoryProduct(cata).then((products)=>{
     
-    res.render('user/catagory', { admin: false,products});
+    res.render('user/catagory', { admin: false,products,catagory});
   })
 })
 module.exports = router;

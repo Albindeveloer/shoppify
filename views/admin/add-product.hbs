@@ -12,7 +12,17 @@
           <label for="fname">name</label>
           <input type="text" id="fname" name="name" class="form-control" />
           <label for="lname">category</label>
-          <input type="text" id="lname" name="category" class="form-control" />
+           {{!-- {{#each catagory}}
+          <input type="text" id="lname" name="category" value={{this.catagory}} class="form-control" />
+          {{/each}} --}}
+         
+          <select name="category" id="cars" class="form-control">
+             {{#each catagory}}
+  <option value="{{this.catagory}}">{{this.catagory}}</option>
+{{/each}}
+</select>
+
+
           <label for="fname">price</label>
           <input type="text" id="fname" name="price" class="form-control" />
           <label for="fname">description</label>
