@@ -70,4 +70,11 @@ router.get("/logout", (req, res) => {
   
 });
 
+
+router.get("/catagory",(req,res)=>{
+  productHelpers.getAllProduct().then((products)=>{
+    
+    res.render('user/catagory', { admin: false,products});
+  })
+})
 module.exports = router;
