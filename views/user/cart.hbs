@@ -1,0 +1,66 @@
+<section>
+
+  
+    <div class="page-content-wrapper">
+      <div class="container">
+          
+            <!-- Back Button-->
+        <div class="back-button"><a href="/">Home
+            <svg class="bi bi-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
+            </svg></a>
+           
+        </div>
+        <!-- Page Title-->
+         <div class="page-heading float-right">
+          <h6 class="mb-0" >My Cart</h6>
+        </div>
+        
+        <!-- Cart Wrapper-->
+        <div class="cart-wrapper-area py-3">
+          <div class="cart-table card mb-3">
+            <div class="table-responsive card-body">
+              <table class="table mb-0">
+                <tbody>
+                    {{#each products}}
+                  <tr>
+                    <th scope="row"> <a
+                class="remove-product"
+                onclick="(removeProduct('{{this._id}}','{{this.product._id}}'))"
+              ><i class="lni lni-close"></i></a></th>
+                  
+                    <td><img style="border-radius: 50%;" src="/product-images/{{this.product._id}}.jpg" alt=""></td>
+                    <td><a href="single-product.html">{{this.product.name}}<span>$12.10 × 1</span></a></td>
+                     <td>{{this.product.price}}</td>
+                    
+                    <td>
+
+              <button class="qty-text"
+                onclick="(changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1))"
+              >-</button><span class="qty-text"
+                id="{{this.product._id}}"
+              >{{this.quantity}}</span>
+              <button class="qty-text"
+                onclick="(changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1))"
+              >+</button>
+            </td>
+                  </tr>
+                  {{/each}}
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+         
+          <!-- Cart Amount Area-->
+          <div class="card cart-amount-area">
+            <div class="card-body d-flex align-items-center justify-content-between">
+              <h5 class="total-price mb-0">Total Amount:<span class="counter" id="total">{{total}}</span></h5><a class="btn btn-warning" href="checkout.html">Checkout Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Internet Connection Status-->
+    <div class="internet-connection-status" id="internetStatus"></div>
+   </section>

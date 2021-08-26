@@ -172,7 +172,8 @@
                   {{#if this.availability}}
                  
                   {{else}}
-                  <!-- Add to Cart --><a class="btn btn-success btn-sm" href="#"><i class="lni lni-plus"></i></a>
+                  <!-- Add to Cart --><button class="btn btn-success btn-sm"  onclick="addToCart('{{this._id}}')"><i class="lni lni-plus"></i></button>
+                 
                   {{/if}}
                 </div>
               </div>
