@@ -142,4 +142,42 @@ router.post("/remove-product", (req, res) => {
   });
 });
 
+router.get("/place-order",verifyLogin, async(req, res) => {
+  let total=await userHelpers.getTotalAmount(req.session.user._id);
+  res.render("user/place-order",{total,user:req.session.user});
+});
+
+router.post("/place-order",async(req,res)=>{
+  console.log(req.body)
+  let products=await userHelpers.getCartProductList(req.body.userId)
+  let total=await userHelpers.getTotalAmount(req.body.userId)
+  userHelpers.placeOrder(req.body,products,total).then((orderId)=>{
+    if(req.body["payment-method"]==='COD'){
+      res.json({codSuccess:true})
+    // }else{
+    //   userHelpers.generateRazorpay(orderId,total).then((response)=>{
+    //     res.json(response)
+    //   })
+    }
+  
+  });
+ 
+});
+
+router.get("/order-success",async(req,res)=>{
+  
+  res.render("user/order-success",{user: req.session.user})
+})
+
+router.get("/orders",verifyLogin,async(req,res)=>{
+  let orders=await userHelpers.getUserOrders(req.session.user._id)
+  res.render("user/orders",{user:req.session.user,orders})
+})
+
+router.get("/view-order-products",async(req,res)=>{
+  let products=await userHelpers.getOrderProducts(req.query.id)
+    res.render("user/view-order-products",{user:req.session.user,products});
+ 
+})
+
 module.exports = router;
